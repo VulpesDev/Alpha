@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Rotation();
         Movement();
@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
     void Rotation()
     {
         mPosX = Input.GetAxis("Mouse X");
-        Debug.Log(mPosX);
-        transform.Rotate(new Vector3(0, 0, mPosX));
+        transform.Rotate(new Vector3(0, 0, -mPosX));
     }
 }

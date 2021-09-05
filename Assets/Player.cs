@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     //rotation
     float mPosX;
-    float sensitivity;
+    float sensitivity = 3;
     //rotation
 
     void Start()

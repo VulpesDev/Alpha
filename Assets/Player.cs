@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     //rotation
     float mPosX;
+    float sensitivity;
     //rotation
 
     void Start()
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour
     void Rotation()
     {
         mPosX = Input.GetAxis("Mouse X");
-        transform.Rotate(new Vector3(0, 0, -mPosX));
+        //transform.Rotate(new Vector3(0, 0, -mPosX));       //rotate through transform component
+        rb.MoveRotation(rb.rotation + (sensitivity*mPosX));  //rotate through rigidbody component
     }
 }

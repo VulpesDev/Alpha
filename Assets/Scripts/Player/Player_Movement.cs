@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player_Movement : Player
 {
     //movement
-    Rigidbody2D rb;
     [SerializeField]int speed;
+    bool inverted = true;
     //movement
 
     //rotation
@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;  // Add to another management script !
-        rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
@@ -32,9 +31,10 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector2(horizontal * speed, vertical * speed);
     }
     void Rotation()
+
     {
         mPosX = Input.GetAxis("Mouse X");
         //transform.Rotate(new Vector3(0, 0, -mPosX));       //rotate through transform component
-        rb.MoveRotation(rb.rotation + (sensitivity*mPosX));  //rotate through rigidbody component
+        rb.MoveRotation(rb.rotation + (sensitivity*mPosX) * (inverted == true ? -1 : 1));  //rotate through rigidbody component
     }
 }

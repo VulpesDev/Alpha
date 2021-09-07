@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player_Attacks : MonoBehaviour
 {
-    [SerializeField] Transform lSpawnPoint, rSpawnPoint;
+    [SerializeField] GameObject lSpawnPoint, rSpawnPoint;
     GameObject projectilePref;
     bool cooldown = false;
     float cooldownValue = 2f;
@@ -18,12 +18,14 @@ public class Player_Attacks : MonoBehaviour
     {
         if(Input.GetAxis("Fire1") > 0 && !cooldown)
         {
-            Instantiate(projectilePref, lSpawnPoint.position, lSpawnPoint.rotation);
+            GameObject _pref = Instantiate(projectilePref, lSpawnPoint.transform.position, lSpawnPoint.transform.rotation);
+            _pref.GetComponent<Bullet>().GetBulletPoint(lSpawnPoint);
             StartCoroutine(StartTimer(cooldownValue));
         }
         else if (Input.GetAxis("Fire2") > 0 && !cooldown)
         {
-            Instantiate(projectilePref, rSpawnPoint.position, rSpawnPoint.rotation);
+            GameObject _pref = Instantiate(projectilePref, rSpawnPoint.transform.position, rSpawnPoint.transform.rotation);
+            _pref.GetComponent<Bullet>().GetBulletPoint(rSpawnPoint);
             StartCoroutine(StartTimer(cooldownValue));
         }
     }

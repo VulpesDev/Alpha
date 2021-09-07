@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    float speed = 0f, lowSpeed = 3f; /// <summary>
+    float speed = 0f, lowSpeed = 3f;
                                      /// speed - current speed ; lowSpeed - lowest speed limit (if speed lower lowSpeed)
                                      /// then destroy the object
-                                     /// </summary>
 
   
     bool locked = true, checkSpeed = false;
@@ -28,19 +27,8 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         // Speed Check
-        speed = rb.velocity.magnitude;
-        if(!locked)
-        {
-            if(!checkSpeed)
-            Invoke("CheckSpeed", 0.2f);
-            else
-            if (speed < lowSpeed)
-            {
-                Destroy();
-            }
-        }
-        // \\Speed Check
-
+        SpeedCheck();
+        // \\Speed Check#
 
         // Lock Check
         if (locked)
@@ -49,6 +37,20 @@ public class Bullet : MonoBehaviour
         }
         // \\Lock Check
 
+    }
+    void SpeedCheck()
+    {
+        speed = rb.velocity.magnitude;
+        if (!locked)
+        {
+            if (!checkSpeed)
+                Invoke("CheckSpeed", 0.2f);
+            else
+            if (speed < lowSpeed)
+            {
+                Destroy();
+            }
+        }
     }
     void CheckSpeed()
     {

@@ -7,10 +7,9 @@ using TMPro;
 public class Management : MonoBehaviour
 {
     GameObject player;
-    void Start()
+    void Awake()
     {
-
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.Find("Player");
         Cursor.lockState = CursorLockMode.Locked;
         Synchronise();
     }
@@ -74,6 +73,7 @@ public class Management : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
     }
+
 
     //  Pause menu
 }

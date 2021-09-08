@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player_Movement : Player
 {
@@ -32,4 +33,5 @@ public class Player_Movement : Player
         //transform.Rotate(new Vector3(0, 0, -mPosX));       //rotate through transform component
         rb.MoveRotation(rb.rotation + (10*sensitivity*mPosX) * (inverted == true ? -1 : 1));  //rotate through rigidbody component
     }
+
 }

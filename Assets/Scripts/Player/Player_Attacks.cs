@@ -6,7 +6,7 @@ public class Player_Attacks : MonoBehaviour
 {
     [SerializeField] GameObject lSpawnPoint, rSpawnPoint;
     GameObject projectilePref;
-    bool cooldown = false;
+    bool cooldownL = false, cooldownR = false;
     float cooldownValue = 2f;
 
     void Start()
@@ -16,23 +16,30 @@ public class Player_Attacks : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetAxis("Fire1") > 0 && !cooldown)
+        if(Input.GetAxis("Fire1") > 0 && !cooldownL)
         {
             GameObject _pref = Instantiate(projectilePref, lSpawnPoint.transform.position, lSpawnPoint.transform.rotation);
             _pref.GetComponent<Bullet>().GetBulletPoint(lSpawnPoint);
-            StartCoroutine(StartTimer(cooldownValue));
+            StartCoroutine(StartTimerL(cooldownValue));
         }
-        else if (Input.GetAxis("Fire2") > 0 && !cooldown)
+        else if (Input.GetAxis("Fire2") > 0 && !cooldownR)
         {
             GameObject _pref = Instantiate(projectilePref, rSpawnPoint.transform.position, rSpawnPoint.transform.rotation);
             _pref.GetComponent<Bullet>().GetBulletPoint(rSpawnPoint);
-            StartCoroutine(StartTimer(cooldownValue));
+            StartCoroutine(StartTimerR(cooldownValue));
         }
     }
-    IEnumerator StartTimer(float time)
+    IEnumerator StartTimerL(float time)
     {
-        cooldown = true;
+        cooldownL = true;
         yield return new WaitForSeconds(time);
-        cooldown = false;
+        cooldownL = false;
     }
+    IEnumerator StartTimerR(float time)
+    {
+        cooldownR = true;
+        yield return new WaitForSeconds(time);
+        cooldownR = false;
+    }
+
 }

@@ -14,10 +14,12 @@ public class Player_Movement : Player
     public float sensitivity = 1;
     //rotation
 
+
     void FixedUpdate()
     {
         Rotation();
         Movement();
+       
     }
     void Movement()
     {

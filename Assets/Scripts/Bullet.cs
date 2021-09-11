@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
     {
         // Speed Check
         SpeedCheck();
-        // \\Speed Check#
+        // \\Speed Check
 
         // Lock Check
         if (locked)

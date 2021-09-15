@@ -73,6 +73,7 @@ public class Bullet : MonoBehaviour
 
     void Destroy()
     {
+        Instantiate(Resources.Load<GameObject>("Explotion"), transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }
